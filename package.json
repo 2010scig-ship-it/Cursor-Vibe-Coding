@@ -1,0 +1,15 @@
+{
+  "name": "memory-match",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test src/engine.test.js"
+  },
+  "devDependencies": {
+    "vite": "^6.3.5"
+  }
+}
