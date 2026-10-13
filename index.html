@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>기억력 짝 맞추기</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <h1>기억력 짝 맞추기</h1>
+      <p class="subtitle">같은 그림 두 장을 찾아 모든 카드를 뒤집어 보세요!</p>
+    </header>
+
+    <section class="controls">
+      <div class="difficulty" role="radiogroup" aria-label="난이도">
+        <button class="diff-btn active" data-level="easy" role="radio" aria-checked="true">쉬움 4×3</button>
+        <button class="diff-btn" data-level="normal" role="radio" aria-checked="false">보통 4×4</button>
+        <button class="diff-btn" data-level="hard" role="radio" aria-checked="false">어려움 6×6</button>
+      </div>
+      <button id="restart" class="restart-btn">다시 시작</button>
+    </section>
+
+    <section class="stats">
+      <div class="stat"><span class="label">시간</span><span id="time" class="value">0:00</span></div>
+      <div class="stat"><span class="label">시도</span><span id="moves" class="value">0</span></div>
+      <div class="stat"><span class="label">찾은 짝</span><span id="pairs" class="value">0 / 0</span></div>
+      <div class="stat"><span class="label">최고 기록</span><span id="best" class="value">-</span></div>
+    </section>
+
+    <section id="board" class="board" aria-label="카드 판"></section>
+  </main>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <div class="trophy">🎉</div>
+      <h2 id="modal-title">성공!</h2>
+      <p id="modal-text"></p>
+      <p id="modal-record" class="record"></p>
+      <button id="play-again" class="restart-btn">한 번 더</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
