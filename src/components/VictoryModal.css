@@ -1,0 +1,143 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.victory-modal-card {
+  background: #ffffff;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 440px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  animation: popIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+}
+
+.victory-celebration-icon {
+  font-size: 3.5rem;
+  margin-bottom: 8px;
+  animation: bounce 1s infinite alternate;
+}
+
+.victory-title {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin: 0 0 6px 0;
+}
+
+.victory-subtitle {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin: 0 0 24px 0;
+}
+
+.victory-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  background: #f8fafc;
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 24px;
+}
+
+.victory-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.v-icon {
+  margin-bottom: 2px;
+}
+
+.v-score { color: #f59e0b; }
+.v-time { color: #3b82f6; }
+.v-moves { color: #ec4899; }
+.v-combo { color: #f97316; }
+
+.v-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.v-value {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #1e293b;
+}
+
+.highlight-score {
+  color: #4f46e5;
+  font-size: 1.3rem;
+}
+
+.victory-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.v-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.play-again-btn {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
+}
+
+.play-again-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.5);
+}
+
+.v-leaderboard-btn {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.v-leaderboard-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-8px); }
+}

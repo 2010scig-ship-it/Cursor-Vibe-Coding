@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Pretendard', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(145deg, #f0f4fd 0%, #e8eef9 50%, #f3f0fa 100%);
+  min-height: 100vh;
+  color: #1e293b;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-app-wrapper {
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.game-header {
+  text-align: center;
+}
+
+.game-title-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(99, 102, 241, 0.12);
+  color: #4f46e5;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.badge-icon {
+  animation: pulse 2s infinite;
+}
+
+.main-title {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 900;
+  color: #1e1b4b;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: -0.02em;
+}
+
+.sparkle-icon {
+  color: #f59e0b;
+  animation: spinSlow 6s linear infinite;
+}
+
+.sub-title {
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  color: #64748b;
+  font-weight: 500;
+}
+
+.game-main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.8; }
+}
+
+@media (max-width: 640px) {
+  .game-app-wrapper {
+    padding: 16px 12px 32px;
+    gap: 14px;
+  }
+}
