@@ -168,7 +168,8 @@
   function handleMatch() {
     [state.first, state.second].forEach((c) => {
       c.classList.add("matched");
-      c.disabled = true;
+      c.setAttribute("aria-disabled", "true");
+      c.tabIndex = -1;
     });
     state.matchedPairs++;
     pairsEl.textContent = `${state.matchedPairs} / ${state.totalPairs}`;
