@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>기억력 짝 맞추기</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <h1>기억력 짝 맞추기</h1>
+
+    <section class="controls">
+      <div class="difficulty" role="group" aria-label="난이도">
+        <button type="button" data-level="easy">쉬움 4×3</button>
+        <button type="button" data-level="normal" class="active">보통 4×4</button>
+        <button type="button" data-level="hard">어려움 6×5</button>
+      </div>
+      <button type="button" id="restart" class="primary">다시 시작</button>
+    </section>
+
+    <section class="stats" aria-live="polite">
+      <div><span>시간</span><strong id="time">0:00</strong></div>
+      <div><span>시도</span><strong id="moves">0</strong></div>
+      <div><span>맞춘 짝</span><strong id="pairs">0 / 0</strong></div>
+      <div><span>최고 기록</span><strong id="best">-</strong></div>
+    </section>
+
+    <section id="board" class="board" aria-label="게임 보드"></section>
+  </main>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <h2 id="modal-title">🎉 클리어!</h2>
+      <p id="result"></p>
+      <p id="record" class="record"></p>
+      <button type="button" id="again" class="primary">한 번 더</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
