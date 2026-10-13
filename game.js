@@ -56,12 +56,15 @@ const ICONS = [
     name: "꽃",
     wash: "#f6d0dc",
     svg: stamp(`
-      <circle cx="24" cy="11" r="6" fill="currentColor"/>
-      <circle cx="36.2" cy="19.6" r="6" fill="currentColor"/>
-      <circle cx="31.6" cy="33.6" r="6" fill="currentColor"/>
-      <circle cx="16.4" cy="33.6" r="6" fill="currentColor"/>
-      <circle cx="11.8" cy="19.6" r="6" fill="currentColor"/>
-      <circle cx="24" cy="23.2" r="4.2" fill="#fffaf3"/>
+      <g fill="currentColor">
+        <circle cx="24" cy="13" r="8.2"/>
+        <circle cx="34.4" cy="20.6" r="8.2"/>
+        <circle cx="30.4" cy="32.8" r="8.2"/>
+        <circle cx="17.6" cy="32.8" r="8.2"/>
+        <circle cx="13.6" cy="20.6" r="8.2"/>
+        <circle cx="24" cy="24" r="4"/>
+      </g>
+      <circle cx="24" cy="24" r="1.7" fill="#fffaf3"/>
     `),
   },
   {
@@ -69,8 +72,8 @@ const ICONS = [
     name: "잎",
     wash: "#d5eddc",
     svg: stamp(`
-      <path fill="currentColor" d="M10 38C22 35 33 27 40 9 25 14 15 24 10 38z"/>
-      <path d="M15 33c7-7 13-13 19-17" fill="none" stroke="#fffaf3" stroke-width="2.2" stroke-linecap="round"/>
+      <path fill="currentColor" d="M24 6c9 7 15 16 14 26-1 7-7 11-14 11S11 39 10 32C9 22 15 13 24 6z"/>
+      <path d="M24 40V16M24 30c-5-1-8-4-10-8M24 24c5-1 8-4 10-8" fill="none" stroke="#fffaf3" stroke-width="1.8" stroke-linecap="round"/>
     `),
   },
   {
@@ -95,7 +98,14 @@ const ICONS = [
     name: "새",
     wash: "#e5dcf8",
     svg: stamp(`
-      <path fill="currentColor" d="M4 28c8-1 13-7 17-16 2 7 6 11 14 13 4 1.5 8 1.4 12 .2-7 2.6-11 7-13 14-2.6-6-8-10-14-11-6-.6-11-.6-16-.2z"/>
+      <g fill="currentColor">
+        <polygon points="7,20 18,28 7,35"/>
+        <ellipse cx="22" cy="29" rx="11" ry="8"/>
+        <path d="M15 27c5-8 13-9 17-2-7 1-12 3-17 2z"/>
+        <circle cx="32" cy="20" r="6.5"/>
+        <polygon points="37,18.5 46,22 37,25.5"/>
+      </g>
+      <circle cx="34" cy="18.5" r="1.3" fill="#fffaf3"/>
     `),
   },
   {
@@ -112,12 +122,10 @@ const ICONS = [
     name: "나비",
     wash: "#f8d9c8",
     svg: stamp(`
-      <ellipse cx="15" cy="18" rx="9" ry="7.2" fill="currentColor"/>
-      <ellipse cx="33" cy="18" rx="9" ry="7.2" fill="currentColor"/>
-      <ellipse cx="16" cy="31.5" rx="7.2" ry="6.2" fill="currentColor"/>
-      <ellipse cx="32" cy="31.5" rx="7.2" ry="6.2" fill="currentColor"/>
-      <rect x="22.2" y="13" width="3.6" height="22" rx="1.8" fill="currentColor"/>
-      <circle cx="24" cy="11.2" r="2.3" fill="currentColor"/>
+      <path fill="currentColor" d="M23 22C18 10 8 6 4 10c2 9 9 14 19 12zM25 22c5-12 15-16 19-12-2 9-9 14-19 12z"/>
+      <path fill="currentColor" d="M23 26c-4 10-11 15-16 13 3-8 9-12 16-13zM25 26c4 10 11 15 16 13-3-8-9-12-16-13z"/>
+      <rect x="22.3" y="14" width="3.4" height="22" rx="1.7" fill="currentColor"/>
+      <circle cx="24" cy="12" r="2.5" fill="currentColor"/>
     `),
   },
   {
