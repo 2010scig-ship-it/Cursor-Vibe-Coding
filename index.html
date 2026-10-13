@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>기억력 짝 맞추기 게임</title>
+  <meta name="description" content="뒤집힌 카드의 짝을 맞추는 기억력 게임. 난이도와 테마를 골라 최고 기록에 도전하세요!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jua&family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+    <span class="stars"></span>
+  </div>
+
+  <main class="layout">
+    <header class="hero">
+      <div class="hero-badge">🧠 MEMORY MATCH</div>
+      <h1>기억력 <span class="accent">짝 맞추기</span></h1>
+      <p class="subtitle">카드를 뒤집어 같은 짝을 찾아보세요. 적게 뒤집을수록 별 3개!</p>
+    </header>
+
+    <section class="panel controls" aria-label="게임 설정">
+      <div class="control-group">
+        <span class="control-label">난이도</span>
+        <div class="segmented" id="difficultyGroup" role="radiogroup" aria-label="난이도 선택">
+          <button class="seg-btn is-active" data-difficulty="easy" role="radio" aria-checked="true">😊 쉬움 4×3</button>
+          <button class="seg-btn" data-difficulty="normal" role="radio" aria-checked="false">🤔 보통 4×4</button>
+          <button class="seg-btn" data-difficulty="hard" role="radio" aria-checked="false">🤯 어려움 6×4</button>
+        </div>
+      </div>
+      <div class="control-group">
+        <span class="control-label">테마</span>
+        <div class="segmented" id="themeGroup" role="radiogroup" aria-label="테마 선택">
+          <button class="seg-btn is-active" data-theme="animal" role="radio" aria-checked="true">🐶 동물</button>
+          <button class="seg-btn" data-theme="food" role="radio" aria-checked="false">🍕 음식</button>
+          <button class="seg-btn" data-theme="face" role="radio" aria-checked="false">😎 표정</button>
+          <button class="seg-btn" data-theme="sport" role="radio" aria-checked="false">⚽ 스포츠</button>
+        </div>
+      </div>
+      <div class="control-actions">
+        <button id="startBtn" class="btn btn-primary">▶ 새 게임 시작</button>
+        <button id="soundBtn" class="btn btn-ghost" aria-pressed="true" title="효과음 켜기/끄기">🔊 효과음 켜짐</button>
+      </div>
+    </section>
+
+    <section class="panel stats" aria-label="게임 현황">
+      <div class="stat">
+        <span class="stat-label">⏱ 시간</span>
+        <strong class="stat-value" id="timeValue">00:00</strong>
+      </div>
+      <div class="stat">
+        <span class="stat-label">👆 이동</span>
+        <strong class="stat-value" id="movesValue">0</strong>
+      </div>
+      <div class="stat">
+        <span class="stat-label">💖 맞춘 쌍</span>
+        <strong class="stat-value"><span id="matchedValue">0</span><span class="muted"> / <span id="totalValue">6</span></span></strong>
+      </div>
+      <div class="stat stat-best">
+        <span class="stat-label">🏆 최고 기록</span>
+        <strong class="stat-value small" id="bestValue">—</strong>
+      </div>
+    </section>
+
+    <section class="board-wrap panel">
+      <div id="previewBar" class="preview-bar" hidden>
+        <span class="preview-dot"></span> 카드를 외우세요… <strong id="previewCount">3</strong>
+      </div>
+      <div id="board" class="board" role="grid" aria-label="카드 보드"></div>
+      <p class="hint">💡 팁: 첫 카드를 뒤집으면 타이머가 시작돼요. 같은 카드를 연속으로 맞추면 콤보!</p>
+      <div id="comboToast" class="combo-toast" aria-live="polite"></div>
+    </section>
+
+    <footer class="footer">
+      <span>Made with 💜 · 기록은 이 브라우저에 저장돼요</span>
+    </footer>
+  </main>
+
+  <div id="winModal" class="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="winTitle">
+      <canvas id="confettiCanvas" class="confetti"></canvas>
+      <div class="win-emoji">🎉</div>
+      <h2 id="winTitle">완성! 대단해요!</h2>
+      <div id="winStars" class="win-stars" aria-label="별점">★★★</div>
+      <dl class="win-records">
+        <div><dt>걸린 시간</dt><dd id="winTime">00:00</dd></div>
+        <div><dt>이동 횟수</dt><dd id="winMoves">0번</dd></div>
+        <div><dt>난이도</dt><dd id="winDifficulty">쉬움</dd></div>
+        <div><dt>최고 기록</dt><dd id="winBest">—</dd></div>
+      </dl>
+      <p id="winMessage" class="win-message"></p>
+      <div class="modal-actions">
+        <button id="againBtn" class="btn btn-primary">🔄 다시 하기</button>
+        <button id="harderBtn" class="btn btn-ghost">🔥 더 어렵게</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
