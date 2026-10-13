@@ -39,6 +39,7 @@ const state = {
 
 let timerId = 0;
 let mismatchTimer = 0;
+let previewTimer = 0;
 
 function loadRecords() {
   try {
@@ -213,7 +214,8 @@ function beginPlay() {
   const status = document.querySelector('[data-live]');
   if (status) status.textContent = '카드를 외워 보세요';
 
-  window.setTimeout(() => {
+  previewTimer = window.setTimeout(() => {
+    if (state.screen !== 'play') return;
     for (const card of state.cards) {
       setCardState(card.id, 'is-preview', false);
       setCardDisabled(card.id, false);
@@ -229,6 +231,7 @@ function beginPlay() {
 }
 
 function startGame(difficultyId) {
+  window.clearTimeout(previewTimer);
   window.clearTimeout(mismatchTimer);
   stopTimer();
   state.difficulty = DIFFICULTIES[difficultyId];
@@ -246,6 +249,7 @@ function startGame(difficultyId) {
 }
 
 function goMenu() {
+  window.clearTimeout(previewTimer);
   window.clearTimeout(mismatchTimer);
   stopTimer();
   state.screen = 'menu';
@@ -320,7 +324,7 @@ function renderBoard() {
 
 function renderPlay() {
   return `
-    <section class="play">
+    <section class="play${state.screen === 'won' ? ' is-complete' : ''}">
       <header class="hud">
         <div class="hud-stats">
           <div class="stat"><span class="stat-label">시간</span><span class="stat-value" data-stat="time">${formatTime(state.elapsedMs)}</span></div>
@@ -344,12 +348,14 @@ function renderPlay() {
 
 function renderWin() {
   return `
-    ${renderPlay()}
+    <div inert>
+      ${renderPlay()}
+    </div>
     <div class="overlay">
       <div class="dialog" role="dialog" aria-labelledby="win-title" aria-modal="true">
         ${state.newRecord ? '<span class="badge">새 기록</span>' : ''}
         <h2 id="win-title">모든 짝을 맞췄어요</h2>
-        <p>${state.difficulty.label} 난이도를 ${state.moves}번 만에 ${formatTime(state.elapsedMs)} 만에 완료했습니다.</p>
+        <p>${state.difficulty.label} 난이도를 이동 ${state.moves}회, ${formatTime(state.elapsedMs)} 만에 완료했습니다.</p>
         <div class="dialog-stats">
           <div class="stat"><span class="stat-label">이동</span><span class="stat-value">${state.moves}</span></div>
           <div class="stat"><span class="stat-label">시간</span><span class="stat-value">${formatTime(state.elapsedMs)}</span></div>
@@ -368,8 +374,12 @@ function bindEvents() {
   app.querySelectorAll('[data-start]').forEach((button) => {
     button.addEventListener('click', () => startGame(button.dataset.start));
   });
-  app.querySelector('[data-menu]')?.addEventListener('click', goMenu);
-  app.querySelector('[data-restart]')?.addEventListener('click', () => startGame(state.difficulty.id));
+  app.querySelectorAll('[data-menu]').forEach((button) => {
+    button.addEventListener('click', goMenu);
+  });
+  app.querySelectorAll('[data-restart]').forEach((button) => {
+    button.addEventListener('click', () => startGame(state.difficulty.id));
+  });
   app.querySelectorAll('[data-card-id]').forEach((button) => {
     button.addEventListener('click', () => onCardClick(button.dataset.cardId));
   });

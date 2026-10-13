@@ -245,6 +245,10 @@ button:focus-visible {
   animation: deal 480ms ease both;
 }
 
+.play.is-complete .card {
+  animation: none;
+}
+
 .card-inner {
   position: relative;
   display: block;
