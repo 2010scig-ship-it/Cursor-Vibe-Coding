@@ -74,7 +74,7 @@ export function resolveFlip(cards, firstId, secondId) {
   }
 
   return {
-    match: first.pairId === second.pairId,
+    match: first.symbolId === second.symbolId,
     lockedIds: [first.id, second.id],
   };
 }

@@ -35,6 +35,7 @@ const state = {
   elapsedMs: 0,
   previewing: false,
   newRecord: false,
+  gameId: 0,
 };
 
 let timerId = 0;
@@ -76,9 +77,15 @@ function stopTimer() {
 
 function startTimer() {
   stopTimer();
+  const gameId = state.gameId;
+  const origin = Date.now();
+  state.startedAt = origin;
   timerId = window.setInterval(() => {
-    state.elapsedMs = Date.now() - state.startedAt;
-    const value = document.querySelector('[data-stat="time"]');
+    if (state.gameId !== gameId || state.screen !== 'play' || state.previewing) {
+      return;
+    }
+    state.elapsedMs = Date.now() - origin;
+    const value = document.querySelector(`[data-stat="time"][data-game="${gameId}"]`);
     if (value) value.textContent = formatTime(state.elapsedMs);
   }, 200);
 }
@@ -172,6 +179,8 @@ function handleMismatch(firstId, secondId) {
 }
 
 function onCardClick(cardId) {
+  const button = cardElement(cardId);
+  if (!button || button.disabled) return;
   if (state.locked || state.previewing || state.screen !== 'play') return;
   if (state.matchedIds.includes(cardId) || state.flippedIds.includes(cardId)) return;
 
@@ -198,7 +207,7 @@ function onCardClick(cardId) {
 
 function beginPlay() {
   const previewMs = state.difficulty.previewMs;
-  state.startedAt = Date.now();
+  state.elapsedMs = 0;
   if (!previewMs) {
     startTimer();
     return;
@@ -222,7 +231,6 @@ function beginPlay() {
     }
     state.previewing = false;
     state.locked = false;
-    state.startedAt = Date.now();
     startTimer();
     refreshCardLabels();
     const live = document.querySelector('[data-live]');
@@ -243,6 +251,7 @@ function startGame(difficultyId) {
   state.elapsedMs = 0;
   state.previewing = false;
   state.newRecord = false;
+  state.gameId += 1;
   state.screen = 'play';
   render();
   beginPlay();
@@ -308,13 +317,17 @@ function renderBoard() {
           class="card${flipped ? ' is-flipped' : ''}${matched ? ' is-matched' : ''}"
           type="button"
           data-card-id="${card.id}"
+          data-symbol="${card.symbolId}"
           style="animation-delay: ${index * 28}ms; --symbol: ${symbol.color}"
           aria-label="${describeCard(card)}"
           ${matched ? 'disabled' : ''}
         >
           <span class="card-inner">
             <span class="card-face card-back"></span>
-            <span class="card-face card-front">${symbol.svg}</span>
+            <span class="card-face card-front">
+              ${symbol.svg}
+              <span class="card-name">${symbol.label}</span>
+            </span>
           </span>
         </button>
       `;
@@ -327,7 +340,7 @@ function renderPlay() {
     <section class="play${state.screen === 'won' ? ' is-complete' : ''}">
       <header class="hud">
         <div class="hud-stats">
-          <div class="stat"><span class="stat-label">시간</span><span class="stat-value" data-stat="time">${formatTime(state.elapsedMs)}</span></div>
+          <div class="stat"><span class="stat-label">시간</span><span class="stat-value" data-stat="time" data-game="${state.gameId}">${formatTime(state.elapsedMs)}</span></div>
           <div class="stat"><span class="stat-label">이동</span><span class="stat-value" data-stat="moves">${state.moves}</span></div>
           <div class="stat"><span class="stat-label">남은 짝</span><span class="stat-value" data-stat="left">${remainingPairs()}</span></div>
         </div>

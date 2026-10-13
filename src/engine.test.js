@@ -65,9 +65,9 @@ describe('createDeck', () => {
 
 describe('resolveFlip', () => {
   const cards = [
-    { id: '0-a', pairId: 0 },
-    { id: '0-b', pairId: 0 },
-    { id: '1-a', pairId: 1 },
+    { id: '0-a', pairId: 0, symbolId: 'moon' },
+    { id: '0-b', pairId: 0, symbolId: 'moon' },
+    { id: '1-a', pairId: 1, symbolId: 'sun' },
   ];
 
   it('detects a matching pair', () => {
@@ -89,6 +89,24 @@ describe('formatTime', () => {
   it('formats minutes and seconds', () => {
     assert.equal(formatTime(0), '00:00');
     assert.equal(formatTime(65000), '01:05');
+  });
+});
+
+describe('createDeck symbol pairing', () => {
+  it('gives both cards in a pair the same symbolId', () => {
+    const symbols = Array.from({ length: 12 }, (_, index) => ({ id: `s${index}` }));
+    const deck = createDeck(symbols, 4, seeded(21));
+    const grouped = deck.reduce((map, card) => {
+      const list = map.get(card.pairId) ?? [];
+      list.push(card);
+      map.set(card.pairId, list);
+      return map;
+    }, new Map());
+
+    for (const pair of grouped.values()) {
+      assert.equal(pair.length, 2);
+      assert.equal(pair[0].symbolId, pair[1].symbolId);
+    }
   });
 });
 

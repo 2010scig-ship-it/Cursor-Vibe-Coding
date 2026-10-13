@@ -7,109 +7,103 @@ function icon(id, label, color, markup) {
   };
 }
 
-const stroke = 'fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"';
+const stroke = 'fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"';
 
 export const SYMBOLS = [
   icon(
     'crane',
     '학',
     '#c45c26',
-    `<path ${stroke} d="M10 42c8-2 14-10 16-18 2 10 8 16 18 18"/>
-     <path ${stroke} d="M26 24c6-8 14-12 22-12-4 6-6 12-6 18"/>
-     <path ${stroke} d="M26 42v10M38 42v10"/>
-     <circle cx="46" cy="14" r="1.8" fill="currentColor"/>`,
+    `<path ${stroke} d="M12 44c10-4 16-14 18-24 1 12 10 20 22 24"/>
+     <path ${stroke} d="M30 20c8-10 16-12 22-12-6 8-8 16-8 22"/>
+     <path ${stroke} d="M28 44v12M40 44v12"/>
+     <circle cx="50" cy="10" r="2.2" fill="currentColor"/>`,
   ),
   icon(
-    'tiger',
-    '호랑이',
-    '#b56a2b',
-    `<ellipse cx="32" cy="34" rx="16" ry="14" ${stroke}/>
-     <path ${stroke} d="M18 22l-4-10 12 6M46 22l4-10-12 6"/>
-     <path ${stroke} d="M24 34h4M36 34h4M32 30v6"/>
-     <path ${stroke} d="M26 42c4 3 8 3 12 0"/>
-     <circle cx="24" cy="30" r="1.6" fill="currentColor"/>
-     <circle cx="40" cy="30" r="1.6" fill="currentColor"/>`,
+    'star',
+    '별',
+    '#c9a227',
+    `<path ${stroke} d="M32 8l6.2 12.6L52 22.4 42 32.2 44.4 46 32 39.4 19.6 46 22 32.2 12 22.4l13.8-1.8z"/>`,
   ),
   icon(
-    'fox',
-    '여우',
-    '#c2783a',
-    `<path ${stroke} d="M16 40c2-14 10-20 16-20s14 6 16 20c-5 6-11 8-16 8s-11-2-16-8z"/>
-     <path ${stroke} d="M18 22l8 8M46 22l-8 8"/>
-     <path ${stroke} d="M28 42c2 2 6 2 8 0"/>
-     <circle cx="26" cy="34" r="1.6" fill="currentColor"/>
-     <circle cx="38" cy="34" r="1.6" fill="currentColor"/>`,
+    'teapot',
+    '찻주전자',
+    '#8b3a3a',
+    `<path ${stroke} d="M18 28h22c6 2 10 8 10 14H18c0-6 4-12 10-14z"/>
+     <path ${stroke} d="M40 34c8 0 12-6 12-10"/>
+     <path ${stroke} d="M28 20c0-4 8-4 8 0"/>
+     <path ${stroke} d="M18 42h32"/>`,
   ),
   icon(
     'fish',
     '물고기',
     '#3d7a73',
-    `<path ${stroke} d="M12 32c8-12 32-12 40 0-8 12-32 12-40 0z"/>
-     <path ${stroke} d="M52 32l8-8v16z"/>
-     <circle cx="24" cy="30" r="1.8" fill="currentColor"/>
-     <path ${stroke} d="M32 26v12"/>`,
+    `<path ${stroke} d="M10 32c10-14 34-14 42 0-8 14-32 14-42 0z"/>
+     <path ${stroke} d="M52 32l10-10v20z"/>
+     <circle cx="22" cy="29" r="2" fill="currentColor"/>
+     <path ${stroke} d="M32 24v16"/>`,
   ),
   icon(
     'butterfly',
     '나비',
     '#7a4e6a',
-    `<path ${stroke} d="M32 16v32"/>
-     <path ${stroke} d="M32 28c-10-12-18-8-18 2 0 8 8 10 18 4 10 6 18 4 18-4 0-10-8-14-18-2z"/>
-     <path ${stroke} d="M28 16h8"/>`,
+    `<path ${stroke} d="M32 14v36"/>
+     <path ${stroke} d="M32 26C20 12 10 18 12 30c2 8 10 10 20 4 10 6 18 4 20-4 2-12-8-18-20-4z"/>
+     <path ${stroke} d="M26 14h12"/>`,
   ),
   icon(
     'moon',
     '달',
     '#c4a35a',
-    `<path ${stroke} d="M38 12a20 20 0 1 0 10 32 16 16 0 1 1-10-32z"/>`,
+    `<path ${stroke} d="M40 10a22 22 0 1 0 8 36 18 18 0 1 1-8-36z"/>`,
   ),
   icon(
     'sun',
     '해',
     '#c9a227',
-    `<circle cx="32" cy="32" r="10" ${stroke}/>
-     <path ${stroke} d="M32 8v6M32 50v6M8 32h6M50 32h6M14 14l4.5 4.5M45.5 45.5 50 50M14 50l4.5-4.5M45.5 18.5 50 14"/>`,
+    `<circle cx="32" cy="32" r="11" ${stroke}/>
+     <path ${stroke} d="M32 6v8M32 50v8M6 32h8M50 32h8M13 13l5.5 5.5M45.5 45.5 51 51M13 51l5.5-5.5M45.5 18.5 51 13"/>`,
   ),
   icon(
     'pine',
     '소나무',
     '#5a7a4a',
-    `<path ${stroke} d="M32 10l14 16H18z"/>
-     <path ${stroke} d="M32 20l16 16H16z"/>
-     <path ${stroke} d="M32 32l18 16H14z"/>
-     <path ${stroke} d="M32 48v8"/>`,
+    `<path ${stroke} d="M32 6l16 18H16z"/>
+     <path ${stroke} d="M32 18l18 18H14z"/>
+     <path ${stroke} d="M32 32l20 18H12z"/>
+     <path ${stroke} d="M32 50v8"/>`,
   ),
   icon(
     'lotus',
     '연꽃',
     '#a33b3b',
-    `<path ${stroke} d="M32 48c8-2 16-10 18-20-8 4-14 4-18 0-4 4-10 4-18 0 2 10 10 18 18 20z"/>
-     <path ${stroke} d="M32 48V26"/>
-     <path ${stroke} d="M22 18c4 6 8 8 10 8 2 0 6-2 10-8-6 2-10 2-10 2s-4 0-10-2z"/>`,
+    `<path ${stroke} d="M32 50c10-4 18-14 20-24-8 6-14 6-20 0-6 6-12 6-20 0 2 10 10 20 20 24z"/>
+     <path ${stroke} d="M22 16c4 8 8 10 10 10s6-2 10-10c-6 3-10 3-10 3s-4 0-10-3z"/>
+     <path ${stroke} d="M32 50V28"/>`,
   ),
   icon(
     'lantern',
     '등불',
     '#8b3a3a',
-    `<path ${stroke} d="M32 8v8"/>
-     <path ${stroke} d="M20 16h24"/>
-     <path ${stroke} d="M22 16c-4 8-4 20 0 28h20c4-8 4-20 0-28z"/>
-     <path ${stroke} d="M26 24h12M26 36h12"/>
-     <path ${stroke} d="M28 44h8v6h-8z"/>`,
+    `<path ${stroke} d="M32 6v8"/>
+     <path ${stroke} d="M20 14h24"/>
+     <path ${stroke} d="M22 14c-5 8-5 22 0 30h20c5-8 5-22 0-30z"/>
+     <path ${stroke} d="M26 24h12M26 34h12"/>
+     <path ${stroke} d="M28 44h8v10h-8z"/>`,
   ),
   icon(
     'mountain',
     '산',
     '#3d5a80',
-    `<path ${stroke} d="M6 48l18-28 10 16 8-10 16 22z"/>
-     <path ${stroke} d="M24 20l6 8 4-4"/>`,
+    `<path ${stroke} d="M6 50L26 18l10 16 8-12 14 28z"/>
+     <path ${stroke} d="M26 18l7 10 5-6"/>`,
   ),
   icon(
     'wave',
     '파도',
     '#3d6a8a',
-    `<path ${stroke} d="M8 40c6-10 12-10 18 0s12 10 18 0 12-10 18 0"/>
-     <path ${stroke} d="M8 28c6-10 12-10 18 0s12 10 18 0 12-10 18 0"/>
-     <path ${stroke} d="M8 52c6-8 12-8 18 0s12 8 18 0 12-8 18 0"/>`,
+    `<path ${stroke} d="M6 26c8-12 14-12 20 0s14 12 20 0 14-12 20 0"/>
+     <path ${stroke} d="M6 40c8-12 14-12 20 0s14 12 20 0 14-12 20 0"/>
+     <path ${stroke} d="M6 54c8-10 14-10 20 0s14 10 20 0 14-10 20 0"/>`,
   ),
 ];
