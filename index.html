@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#efe6d4" />
+    <title>짝 맞추기</title>
+    <meta
+      name="description"
+      content="같은 그림 두 장을 찾는 기억력 짝 맞추기 게임"
+    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="top">
+        <div class="title-block">
+          <p class="eyebrow">기억놀이</p>
+          <h1>짝 맞추기</h1>
+          <p class="lead">같은 그림이 그려진 카드 두 장을 찾아 뒤집으세요.</p>
+        </div>
+        <div class="controls">
+          <div class="levels" role="group" aria-label="난이도">
+            <button type="button" data-level="easy">
+              쉬움
+              <span>6쌍</span>
+            </button>
+            <button type="button" data-level="normal">
+              보통
+              <span>8쌍</span>
+            </button>
+            <button type="button" data-level="hard">
+              어려움
+              <span>12쌍</span>
+            </button>
+          </div>
+          <div class="actions">
+            <button type="button" id="sound-toggle" aria-pressed="true">
+              소리 켜짐
+            </button>
+            <button type="button" id="restart" class="primary">다시 하기</button>
+          </div>
+        </div>
+      </header>
+
+      <section class="stats" aria-label="이번 판">
+        <div>
+          <span id="moves">0</span>
+          <small>시도</small>
+        </div>
+        <div>
+          <span id="time">0:00</span>
+          <small>시간</small>
+        </div>
+        <div>
+          <span id="left">8</span>
+          <small>남은 짝</small>
+        </div>
+        <div>
+          <span id="best">기록 없음</span>
+          <small>최고 기록</small>
+        </div>
+      </section>
+
+      <p id="live" class="sr-only" aria-live="polite"></p>
+      <div id="board" class="board" data-cols="4" role="group" aria-label="카드"></div>
+    </div>
+
+    <dialog id="win-dialog" aria-labelledby="win-title">
+      <p class="eyebrow" id="win-kicker">한 판 클리어</p>
+      <h2 id="win-title">모두 찾았어요</h2>
+      <p id="win-stars" class="stars"></p>
+      <p id="win-summary" class="summary"></p>
+      <p id="win-record" class="record-note"></p>
+      <button type="button" id="win-again" class="primary">한 판 더</button>
+    </dialog>
+
+    <script src="game.js"></script>
+  </body>
+</html>
